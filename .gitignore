@@ -1,0 +1,46 @@
+# Binaries and executables
+*.exe
+*.out
+*.app
+*.bin
+
+# Logs
+*.log
+
+# Go build artifacts
+*.o
+*.a
+*.so
+*.test
+
+# Vendor directory (if using `go mod vendor`)
+vendor/
+
+# Go module cache (not needed in repo)
+go.sum
+
+# Compiled binary output (if built locally)
+delivery-optimiser
+
+# IDE/Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Debugger and coverage files
+*.test
+*.prof
+*.cover
+
+# Environment files
+.env
+.env.*
+
+# macOS system files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
