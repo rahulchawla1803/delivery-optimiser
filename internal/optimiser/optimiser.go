@@ -1,7 +1,6 @@
 package optimiser
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/rahulchawla1803/delivery-optimiser/internal/parser"
@@ -19,36 +18,34 @@ type RouteStep struct {
 	Location       parser.Location `json:"location"`
 }
 
+// OptimisedResult wraps the final route and total time
+type OptimisedResult struct {
+	Route     []RouteStep `json:"route"`
+	TotalTime float64     `json:"total_time"`
+}
+
 // Optimise processes the input, creates the time graph, and executes the selected algorithm
-func Optimise(input parser.Input) ([]RouteStep, float64) {
+func Optimise(input parser.Input) OptimisedResult {
 	// Step 1: Create the time graph
 	graph := timegraph.BuildTimeGraph(input)
 
 	// Step 2: Select the optimization algorithm
+	var route []RouteStep
+	var totalTime float64
+
 	switch input.Config.Algorithm {
 	case "greedy":
-		return GreedyOptimise(input, graph)
+		route, totalTime = GreedyOptimise(input, graph)
 	case "brute_force":
-		return BruteForceOptimise(input, graph)
+		route, totalTime = BruteForceOptimise(input, graph)
 	case "dp":
-		return DPOptimise(input, graph)
+		// route, totalTime = DPOptimise(input, graph)
 	default:
 		log.Fatalf("Invalid algorithm choice: %s", input.Config.Algorithm)
 	}
 
-	return nil, 0
-}
-
-// BruteForceOptimise (Placeholder)
-func BruteForceOptimise(input parser.Input, graph timegraph.TimeGraph) ([]RouteStep, float64) {
-	fmt.Println("Executing Brute Force Algorithm...")
-	// Implement brute force algorithm logic here
-	return nil, 0
-}
-
-// DPOptimise (Placeholder)
-func DPOptimise(input parser.Input, graph timegraph.TimeGraph) ([]RouteStep, float64) {
-	fmt.Println("Executing DP Algorithm...")
-	// Implement DP algorithm logic here
-	return nil, 0
+	return OptimisedResult{
+		Route:     route,
+		TotalTime: totalTime,
+	}
 }

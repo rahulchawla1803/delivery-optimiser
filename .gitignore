@@ -16,6 +16,9 @@
 # Vendor directory (if using `go mod vendor`)
 vendor/
 
+# Output directory
+output/
+
 # Go module cache (not needed in repo)
 go.sum
 
