@@ -1,0 +1,25 @@
+{
+  "config": {
+    "driver_limits": {
+      "max_distance": 50,
+      "max_orders": 2
+    },
+    "algorithm": "greedy"
+  },
+  "driver": {
+    "location": { "latitude": 12.9716, "longitude": 77.5946 },
+    "avg_speed": 20
+  },
+  "restaurants": [
+    { "id": 1, "name": "Pizza Place", "location": { "latitude": 12.9611, "longitude": 77.5985 }, "preparation": { "avg_time": 10, "peak_factor": 1.2 } },
+    { "id": 2, "name": "Burger Hub", "location": { "latitude": 12.9667, "longitude": 77.6100 }, "preparation": { "avg_time": 8, "peak_factor": 1.1 } }
+  ],
+  "customers": [
+    { "id": "C101", "name": "Kanika Arora", "location": { "latitude": 12.9551, "longitude": 77.6012 } },
+    { "id": "C102", "name": "Tushar Swami", "location": { "latitude": 12.9705, "longitude": 77.6208 } }
+  ],
+  "orders": [
+    { "order_id": 101, "restaurant_id": 1, "customer_id": "C101" },
+    { "order_id": 102, "restaurant_id": 2, "customer_id": "C102" }
+  ]
+}
