@@ -30,7 +30,15 @@ func Run() error {
 	}
 
 	// Step 4: Run Optimisation
-	optimisedResult := optimiser.Optimise(input)
+	// NOTE: Validation of rules shouldn't be in this scope.
+	// The input should be validated beforehand, and the Haversine distance
+	// should be computed and validated at an earlier stage (e.g., during parsing or validation).
+	// Due to lack of time, this validation is being handled here.
+	optimisedResult, err := optimiser.Optimise(input, validationRules)
+	if err != nil {
+		output.Fail(fmt.Errorf("optimiser failed: %v", err))
+		return err
+	}
 
 	// Step 5: Handle Success Flow
 	err = output.Success(optimisedResult)

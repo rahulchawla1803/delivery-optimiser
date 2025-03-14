@@ -3,13 +3,13 @@ package utils
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 )
 
 // LoadJSON loads a JSON file and unmarshals it into a struct
 func LoadJSON[T any](filePath string) (T, error) {
 	var data T
-	file, err := ioutil.ReadFile(filePath)
+	file, err := os.ReadFile(filePath)
 	if err != nil {
 		return data, fmt.Errorf("error reading file: %v", err)
 	}
@@ -36,7 +36,7 @@ func WriteJSON(filename string, data interface{}) error {
 		return fmt.Errorf("error marshaling JSON: %v", err)
 	}
 
-	if err := ioutil.WriteFile(filename, file, 0644); err != nil {
+	if err := os.WriteFile(filename, file, 0644); err != nil {
 		return fmt.Errorf("error writing JSON file: %v", err)
 	}
 	return nil

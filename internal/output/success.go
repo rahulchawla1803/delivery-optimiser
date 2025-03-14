@@ -30,11 +30,11 @@ func Success(result optimiser.OptimisedResult) error {
 	}
 
 	// Step 5: Write Debug Log
-	debug := "Execution completed successfully."
-	err = utils.WriteText("output/debug.log", debug)
-	if err != nil {
-		return fmt.Errorf("failed to write debug.log: %v", err)
-	}
+	// debug := "Execution completed successfully."
+	// err = utils.WriteText("output/debug.log", debug)
+	// if err != nil {
+	// 	return fmt.Errorf("failed to write debug.log: %v", err)
+	// }
 
 	return nil
 }

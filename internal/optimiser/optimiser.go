@@ -25,9 +25,12 @@ type OptimisedResult struct {
 }
 
 // Optimise processes the input, creates the time graph, and executes the selected algorithm
-func Optimise(input parser.Input) OptimisedResult {
+func Optimise(input parser.Input, rules parser.InputValidation) (OptimisedResult, error) {
 	// Step 1: Create the time graph
-	graph := timegraph.BuildTimeGraph(input)
+	graph, err := timegraph.BuildTimeGraph(input, rules)
+	if err != nil {
+		return OptimisedResult{}, err // Propagate error up
+	}
 
 	// Step 2: Select the optimization algorithm
 	var route []RouteStep
@@ -47,5 +50,5 @@ func Optimise(input parser.Input) OptimisedResult {
 	return OptimisedResult{
 		Route:     route,
 		TotalTime: totalTime,
-	}
+	}, nil
 }

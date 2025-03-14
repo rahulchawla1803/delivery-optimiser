@@ -10,7 +10,3 @@ build:
 # Run the program (builds first, then executes)
 run: build
 	@./$(BINARY_NAME) $(INPUT_FILE) $(VALIDATION_FILE)
-
-# Run tests
-test:
-	@go test ./...
