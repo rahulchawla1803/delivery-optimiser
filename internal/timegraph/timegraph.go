@@ -20,7 +20,7 @@ func BuildTimeGraph(input parser.Input, rules parser.InputValidation) (TimeGraph
 		graph.Times[loc] = make(map[string]float64)
 	}
 
-	if err := computeTimes(input, &graph); err != nil {
+	if err := computeTimes(input, &graph, rules); err != nil {
 		return graph, err
 	}
 
@@ -32,7 +32,7 @@ func BuildTimeGraph(input parser.Input, rules parser.InputValidation) (TimeGraph
 
 // computeTimes calculates travel times between all location pairs.
 // For driver->restaurant legs, it uses the maximum of the computed travel time and the restaurant's average wait time.
-func computeTimes(input parser.Input, graph *TimeGraph) error {
+func computeTimes(input parser.Input, graph *TimeGraph, rules parser.InputValidation) error {
 	locations := getAllLocations(input)
 	speedKmph := float64(input.Driver.AvgSpeed)
 	speedKmpm := speedKmph / 60.0
@@ -43,6 +43,14 @@ func computeTimes(input parser.Input, graph *TimeGraph) error {
 			latA, lonA := getLocationCoords(locA, input)
 			latB, lonB := getLocationCoords(locB, input)
 			distance := utils.HaversineDistance(latA, lonA, latB, lonB)
+			// Validate distance against allowed range
+			if distance > rules.DriverLimits.MaxDistance.Max || distance < rules.DriverLimits.MaxDistance.Min {
+				return fmt.Errorf(
+					"distance between %s and %s (%.2f km) is out of allowed range (%.2f - %.2f km)",
+					locA, locB, distance, rules.DriverLimits.MaxDistance.Min, rules.DriverLimits.MaxDistance.Max,
+				)
+			}
+
 			travelTime := distance / speedKmpm
 
 			// If leg is from driver to a restaurant, use the maximum of travelTime and restaurant's avg wait time.

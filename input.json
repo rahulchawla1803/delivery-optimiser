@@ -7,22 +7,21 @@
     "algorithm": "brute_force"
   },
   "driver": {
-    "location": { "latitude": 28.391698787632807, "longitude": 77.29764829776096 },
+    "location": { "latitude": 12.93545117003204, "longitude":  77.61557472938149},
     "avg_speed": 20
   },
   "restaurants": [
-    { "id": 1, "name": "KFC NIT", "location": { "latitude": 28.390698787632807, "longitude": 77.29764829776096 }, "preparation": { "avg_time": 5, "peak_factor": 1.2 } },
-    { "id": 2, "name": "Qutub Minar", "location": { "latitude": 28.524673654885035, "longitude": 77.18552843289083 }, "preparation": { "avg_time": 5, "peak_factor": 1.1 } },
-    { "id": 3, "name": "Dominos NIT", "location": { "latitude": 28.404372896075998, "longitude": 77.30529916200184 }, "preparation": { "avg_time": 80, "peak_factor": 1.1 } }
+    { "id": 1, "name": "Gopalan Mall, RR Nagar", "location": { "latitude": 12.936198941682477, "longitude": 77.51777570261642 }, "preparation": { "avg_time": 13, "peak_factor": 1.2 } },
+    { "id": 2, "name": "Truffles, New Bel Road ", "location": { "latitude": 13.028479432933725, "longitude": 77.57319257548896  }, "preparation": { "avg_time": 13, "peak_factor": 1.1 } },
+    { "id": 3, "name": "Meghana Food, Indiranagar ", "location": { "latitude": 12.978384544138054,  "longitude": 77.6378880913696 }, "preparation": { "avg_time": 8, "peak_factor": 1.1 } }
   ],
   "customers": [
-    { "id": "C101", "name": "Sainik 1", "location": { "latitude": 28.399497638001705, "longitude": 77.27458097305845 } },
-    { "id": "C102", "name": "Sainik 2", "location": { "latitude": 28.399497638001705, "longitude": 77.27458097305845 } },
-    { "id": "C103", "name": "Badarpur", "location": { "latitude": 28.518616564985482, "longitude": 77.29442886178235 } }
+    { "id": "C101", "name": "RVCE Hostel", "location": { "latitude": 12.923921458694535,  "longitude": 77.49875484623689 } },
+    { "id": "C102", "name": "Dollars Colony home", "location": { "latitude": 13.041627085348354, "longitude":  77.5689008691301 } }
   ],
   "orders": [
     { "order_id": 101, "restaurant_id": 1, "customer_id": "C101" },
-    { "order_id": 102, "restaurant_id": 2, "customer_id": "C102" },
-    { "order_id": 103, "restaurant_id": 3, "customer_id": "C103" }
+    { "order_id": 102, "restaurant_id": 2, "customer_id": "C101" },
+    { "order_id": 103, "restaurant_id": 3, "customer_id": "C102" }
   ]
 }

@@ -34,7 +34,12 @@ Run the following command:
 #### Error Case:
 **error.log**: captures execution errors if validation or processing fails.
 
-## 3. Workflow & Architecture
+## 3. Supported Algorithms
+**Greedy**: At each step, the driver picks the next task (pickup/dropoff) based on the shortest travel time, considering restaurant preparation time when picking up. This provides a fast but not necessarily optimal solution.
+
+**Brute Force**: Evaluates all possible order sequences, computing the total travel time for each, and selects the optimal sequence with the least total time. This guarantees the best route but is computationally expensive.
+
+## 4. Workflow & Architecture
 
 ### Design Principles
 **Encapsulation**: core.Run() encapsulates execution, keeping internal modules independent.
@@ -57,7 +62,7 @@ Output formats and writes results to the output/ directory.
 **output**: Generates and writes structured output.
 **utils**: Utility functions for JSON, file handling etc.
 
-## 4. Limitations & Future Enhancements
+## 5. Limitations & Future Enhancements
 #### Logging & Debugging
 Error logging can be structured better with proper bubbling for better traceability. A more detailed logging system including debug logs could improve visibility, but due to time constraints this was not implemented.
 
